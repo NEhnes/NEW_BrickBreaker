@@ -31,8 +31,8 @@
             this.gameOverLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.replayButton = new System.Windows.Forms.Button();
+            this.endButton = new System.Windows.Forms.Button();
             this.pictureBoxL = new System.Windows.Forms.PictureBox();
             this.pictureBoxR = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxL)).BeginInit();
@@ -74,33 +74,33 @@
             this.label2.Text = "SCORE";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // button1
+            // replayButton
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(7)))), ((int)(((byte)(112)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("DynaPuff", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(127)))), ((int)(((byte)(113)))));
-            this.button1.Location = new System.Drawing.Point(372, 472);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(111, 79);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Replay";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.replayButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(7)))), ((int)(((byte)(112)))));
+            this.replayButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.replayButton.Font = new System.Drawing.Font("DynaPuff", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.replayButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(127)))), ((int)(((byte)(113)))));
+            this.replayButton.Location = new System.Drawing.Point(372, 472);
+            this.replayButton.Name = "replayButton";
+            this.replayButton.Size = new System.Drawing.Size(111, 79);
+            this.replayButton.TabIndex = 5;
+            this.replayButton.Text = "Replay";
+            this.replayButton.UseVisualStyleBackColor = false;
+            this.replayButton.Click += new System.EventHandler(this.replayButton_Click);
             // 
-            // button2
+            // endButton
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(7)))), ((int)(((byte)(112)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Font = new System.Drawing.Font("DynaPuff", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(127)))), ((int)(((byte)(113)))));
-            this.button2.Location = new System.Drawing.Point(557, 472);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(111, 79);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Exit";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.endButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(7)))), ((int)(((byte)(112)))));
+            this.endButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.endButton.Font = new System.Drawing.Font("DynaPuff", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.endButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(127)))), ((int)(((byte)(113)))));
+            this.endButton.Location = new System.Drawing.Point(557, 472);
+            this.endButton.Name = "endButton";
+            this.endButton.Size = new System.Drawing.Size(111, 79);
+            this.endButton.TabIndex = 6;
+            this.endButton.Text = "Exit";
+            this.endButton.UseVisualStyleBackColor = false;
+            this.endButton.Click += new System.EventHandler(this.endButton_Click);
             // 
             // pictureBoxL
             // 
@@ -127,8 +127,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(206)))), ((int)(((byte)(170)))));
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.endButton);
+            this.Controls.Add(this.replayButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBoxL);
@@ -150,7 +150,7 @@
         private System.Windows.Forms.PictureBox pictureBoxL;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button replayButton;
+        private System.Windows.Forms.Button endButton;
     }
 }
