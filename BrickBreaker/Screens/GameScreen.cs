@@ -49,7 +49,7 @@ namespace BrickBreaker
 
         // list of all blocks for current level
         List<Block> blocks = new List<Block>();
-        string currentLevel = "Level2";
+        string currentLevel = "Level1";
 
         // Brushes
         SolidBrush paddleBrush = new SolidBrush(Color.White);
@@ -292,6 +292,27 @@ namespace BrickBreaker
                 if (ballRect.IntersectsWith(blockRect))
                 {
                     blocks.RemoveAt(i);
+                    if (blocks.Count <= 0)
+                    {
+                        if (currentLevel == "Level1")
+                        {
+                            currentLevel = "Level2";
+                        }
+                        if (currentLevel == "Level2")
+                        {
+                            currentLevel = "Level3";
+                        }
+                        if (currentLevel == "Level3") 
+                        {
+                            Form form = this.FindForm();
+                            Screens.EndScreenL ps = new Screens.EndScreenL();
+
+                            ps.Location = new Point((form.Width - ps.Width) / 2, (form.Height - ps.Height) / 2);
+
+                            form.Controls.Add(ps);
+                            form.Controls.Remove(this);
+                        }
+                    }
 
                     if (!piercingBall)
                     {
