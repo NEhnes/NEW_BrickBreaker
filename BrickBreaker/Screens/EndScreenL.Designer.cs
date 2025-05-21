@@ -30,7 +30,7 @@
         {
             this.gameOverLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.scoreLabel = new System.Windows.Forms.Label();
             this.replayButton = new System.Windows.Forms.Button();
             this.endButton = new System.Windows.Forms.Button();
             this.pictureBoxL = new System.Windows.Forms.PictureBox();
@@ -62,17 +62,17 @@
             this.label1.Text = "Good Job! \r\nYou Socred:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label2
+            // scoreLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("DynaPuff Medium", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(234)))), ((int)(((byte)(255)))));
-            this.label2.Location = new System.Drawing.Point(417, 253);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(223, 76);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "SCORE";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.scoreLabel.AutoSize = true;
+            this.scoreLabel.Font = new System.Drawing.Font("DynaPuff Medium", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.scoreLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(234)))), ((int)(((byte)(255)))));
+            this.scoreLabel.Location = new System.Drawing.Point(417, 253);
+            this.scoreLabel.Name = "scoreLabel";
+            this.scoreLabel.Size = new System.Drawing.Size(223, 76);
+            this.scoreLabel.TabIndex = 4;
+            this.scoreLabel.Text = "SCORE";
+            this.scoreLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // replayButton
             // 
@@ -129,13 +129,14 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(206)))), ((int)(((byte)(170)))));
             this.Controls.Add(this.endButton);
             this.Controls.Add(this.replayButton);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.scoreLabel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBoxL);
             this.Controls.Add(this.pictureBoxR);
             this.Controls.Add(this.gameOverLabel);
             this.Name = "EndScreenL";
             this.Size = new System.Drawing.Size(1067, 667);
+            this.Load += new System.EventHandler(this.EndScreenL_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxL)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxR)).EndInit();
             this.ResumeLayout(false);
@@ -149,7 +150,7 @@
         private System.Windows.Forms.PictureBox pictureBoxR;
         private System.Windows.Forms.PictureBox pictureBoxL;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label scoreLabel;
         private System.Windows.Forms.Button replayButton;
         private System.Windows.Forms.Button endButton;
     }

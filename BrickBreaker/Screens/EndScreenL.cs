@@ -34,5 +34,10 @@ namespace BrickBreaker.Screens
             Application.Exit();
 
         }
+
+        private void EndScreenL_Load(object sender, EventArgs e)
+        {
+            scoreLabel.Text = $"{GameScreen.score}";
+        }
     }
 }
