@@ -300,7 +300,7 @@ namespace BrickBreaker
                         {
                             currentLevel = "Level3";
                         }
-                        if (currentLevel == "Level3")
+                        if (currentLevel == "Level3") 
                         {
                             Form form = this.FindForm();
                             Screens.EndScreenL ps = new Screens.EndScreenL();
