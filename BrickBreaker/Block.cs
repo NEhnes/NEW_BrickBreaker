@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Xml;
+using System.Security.Cryptography;
 
 namespace BrickBreaker
 {
@@ -23,6 +24,33 @@ namespace BrickBreaker
             x = _x;
             y = _y;
             colour = _colour;
+
+
+        }
+
+        public void AddScore()
+        {
+            // has to be a switch because Color.Blank is not a constant
+            if (colour == Color.Red)
+            {
+                GameScreen.score += 100;
+            }
+            else if (colour == Color.Blue)
+            {
+                GameScreen.score += 200;
+            }
+            else if (colour == Color.Pink)
+            {
+                GameScreen.score += 300;
+            }
+            else if (colour == Color.Yellow)
+            {
+                GameScreen.score += 400;
+            }
+            else if (colour == Color.Gray)
+            {
+                GameScreen.score += 500;
+            }
         }
     }
 }

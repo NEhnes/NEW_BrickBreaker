@@ -18,6 +18,7 @@ using System.IO;
 using System.Xml;
 using System.Runtime.CompilerServices;
 using System.Timers;
+using System.Security.Cryptography.X509Certificates;
 
 namespace BrickBreaker
 {
@@ -32,6 +33,9 @@ namespace BrickBreaker
 
         // Game values
         int lives;
+
+        // game score
+        public static int score;
 
         // Paddle and Ball objects
         Paddle paddle;
@@ -84,6 +88,9 @@ namespace BrickBreaker
 
             //set life counter
             lives = 3;
+
+            // set running score
+            score = 0;
 
             // run opening UI and UX code
             LFischStart();
@@ -259,6 +266,9 @@ namespace BrickBreaker
                 if (ball.BlockCollision(b))
                 {
                     blocks.Remove(b);
+                    b.AddScore();
+
+                    scoreLabel.Text = $"{score}";
 
                     popPlayer.Play();
 
