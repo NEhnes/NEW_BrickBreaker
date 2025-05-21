@@ -17,13 +17,21 @@ namespace BrickBreaker.Screens
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void replayButton_Click(object sender, EventArgs e)
         {
+            GameScreen gs = new GameScreen();
+            Form form = this.FindForm();
+
+            form.Controls.Add(gs);
+            form.Controls.Remove(this);
+
+            gs.Location = new Point((form.Width - gs.Width) / 2, (form.Height - gs.Height) / 2);
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void endButton_Click(object sender, EventArgs e)
         {
+            Application.Exit();
 
         }
     }

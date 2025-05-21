@@ -134,21 +134,13 @@ namespace BrickBreaker
             // start the game engine loop
             gameTimer.Enabled = false;
 
-            gameSound.Open(new Uri(Application.StartupPath + "/Resources/audiomass-output.mp3"));
+            gameSound.Open(new Uri(Application.StartupPath + "/Resources/background.mp3"));
             gameSound.MediaEnded += new EventHandler(gameSound_MediaEnded);
             gameSound.Play();
         }
 
         public void LFischStart()
         {
-            // gameSound.Play();
-
-            string fontFilePath;
-            PrivateFontCollection font = new PrivateFontCollection();
-            byte[] fontData = Properties.Resources.DynaPuff_VariableFont_wdth_wght;
-            IntPtr fontPtr = Marshal.AllocCoTaskMem(fontData.Length);
-            Marshal.Copy(fontData, 0, fontPtr, fontData.Length);
-            font.AddMemoryFont(fontPtr, fontData.Length);
 
             Random randBG = new Random();
 
