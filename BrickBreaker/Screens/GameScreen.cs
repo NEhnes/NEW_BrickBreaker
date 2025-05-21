@@ -307,6 +307,28 @@ namespace BrickBreaker
             {
                 p.Move();
             }
+            Rectangle paddleRect = new Rectangle(paddle.x, paddle.y, paddle.width, paddle.height);
+
+            for (int i = powerups.Count - 1; i >= 0; i--)
+            {
+                Powerup p = powerups[i];
+                Rectangle powerupRect = new Rectangle(p.x, p.y, p.size, p.size);
+
+                // Check if paddle collects the powerup
+                if (powerupRect.IntersectsWith(paddleRect))
+                {
+                    ApplyPowerup(p.type);      // Apply effect
+                    powerups.RemoveAt(i);      // Remove powerup from screen
+                }
+                else if (p.y > paddle.y + paddle.height)
+                {
+                    powerups.RemoveAt(i);      // Remove if it falls below screen
+                }
+                else
+                {
+                    p.Move();                  // Let it fall down
+                }
+            }
 
             //PowerupCollision();
 
