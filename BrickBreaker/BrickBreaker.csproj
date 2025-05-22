@@ -84,6 +84,12 @@
     <Compile Include="Screens\Credits.Designer.cs">
       <DependentUpon>Credits.cs</DependentUpon>
     </Compile>
+    <Compile Include="Screens\EndScreenD.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Screens\EndScreenD.Designer.cs">
+      <DependentUpon>EndScreenD.cs</DependentUpon>
+    </Compile>
     <Compile Include="Screens\EndScreenL.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -135,6 +141,9 @@
     </Compile>
     <EmbeddedResource Include="Screens\Credits.resx">
       <DependentUpon>Credits.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\EndScreenD.resx">
+      <DependentUpon>EndScreenD.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Screens\EndScreenL.resx">
       <DependentUpon>EndScreenL.cs</DependentUpon>

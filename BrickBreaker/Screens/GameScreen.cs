@@ -364,13 +364,26 @@ namespace BrickBreaker
             gameSound.Close();
 
             // Goes to the game over screen
-            Form form = this.FindForm();
-            Screens.EndScreenL ps = new Screens.EndScreenL();
+            if (Screens.OptionsScreenL.light == true)
+            {
+                Form form = this.FindForm();
+                Screens.EndScreenL ps = new Screens.EndScreenL();
 
-            ps.Location = new Point((form.Width - ps.Width) / 2, (form.Height - ps.Height) / 2);
+                ps.Location = new Point((form.Width - ps.Width) / 2, (form.Height - ps.Height) / 2);
 
-            form.Controls.Add(ps);
-            form.Controls.Remove(this);
+                form.Controls.Add(ps);
+                form.Controls.Remove(this);
+            }
+            else
+            {
+                Form form = this.FindForm();
+                Screens.EndScreenD psd = new Screens.EndScreenD();
+
+                psd.Location = new Point((form.Width - psd.Width) / 2, (form.Height - psd.Height) / 2);
+
+                form.Controls.Add(psd);
+                form.Controls.Remove(this);
+            }
         }
 
         public void GameScreen_Paint(object sender, PaintEventArgs e)
