@@ -1,6 +1,6 @@
 ﻿namespace BrickBreaker.Screens
 {
-    partial class EndScreenL
+    partial class EndScreenD
     {
         /// <summary> 
         /// Required designer variable.
@@ -43,7 +43,7 @@
             // 
             this.gameOverLabel.AutoSize = true;
             this.gameOverLabel.Font = new System.Drawing.Font("DynaPuff Medium", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gameOverLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(234)))), ((int)(((byte)(255)))));
+            this.gameOverLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(127)))), ((int)(((byte)(113)))));
             this.gameOverLabel.Location = new System.Drawing.Point(344, 35);
             this.gameOverLabel.Name = "gameOverLabel";
             this.gameOverLabel.Size = new System.Drawing.Size(379, 76);
@@ -54,7 +54,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("DynaPuff Medium", 21F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(234)))), ((int)(((byte)(255)))));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(127)))), ((int)(((byte)(113)))));
             this.label1.Location = new System.Drawing.Point(417, 140);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(223, 88);
@@ -66,7 +66,7 @@
             // 
             this.scoreLabel.AutoSize = true;
             this.scoreLabel.Font = new System.Drawing.Font("DynaPuff Medium", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.scoreLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(234)))), ((int)(((byte)(255)))));
+            this.scoreLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(127)))), ((int)(((byte)(113)))));
             this.scoreLabel.Location = new System.Drawing.Point(417, 253);
             this.scoreLabel.Name = "scoreLabel";
             this.scoreLabel.Size = new System.Drawing.Size(223, 76);
@@ -76,10 +76,10 @@
             // 
             // replayButton
             // 
-            this.replayButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(7)))), ((int)(((byte)(112)))));
+            this.replayButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(135)))), ((int)(((byte)(153)))));
             this.replayButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.replayButton.Font = new System.Drawing.Font("DynaPuff", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.replayButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(127)))), ((int)(((byte)(113)))));
+            this.replayButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(248)))), ((int)(((byte)(255)))));
             this.replayButton.Location = new System.Drawing.Point(372, 472);
             this.replayButton.Name = "replayButton";
             this.replayButton.Size = new System.Drawing.Size(111, 79);
@@ -90,10 +90,10 @@
             // 
             // endButton
             // 
-            this.endButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(7)))), ((int)(((byte)(112)))));
+            this.endButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(135)))), ((int)(((byte)(153)))));
             this.endButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.endButton.Font = new System.Drawing.Font("DynaPuff", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.endButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(127)))), ((int)(((byte)(113)))));
+            this.endButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(248)))), ((int)(((byte)(255)))));
             this.endButton.Location = new System.Drawing.Point(557, 472);
             this.endButton.Name = "endButton";
             this.endButton.Size = new System.Drawing.Size(111, 79);
@@ -122,11 +122,11 @@
             this.pictureBoxR.TabIndex = 1;
             this.pictureBoxR.TabStop = false;
             // 
-            // EndScreenL
+            // EndScreenD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(206)))), ((int)(((byte)(170)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(7)))), ((int)(((byte)(112)))));
             this.Controls.Add(this.endButton);
             this.Controls.Add(this.replayButton);
             this.Controls.Add(this.scoreLabel);
@@ -134,7 +134,7 @@
             this.Controls.Add(this.pictureBoxL);
             this.Controls.Add(this.pictureBoxR);
             this.Controls.Add(this.gameOverLabel);
-            this.Name = "EndScreenL";
+            this.Name = "EndScreenD";
             this.Size = new System.Drawing.Size(1067, 667);
             this.Load += new System.EventHandler(this.EndScreenL_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxL)).EndInit();

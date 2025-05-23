@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace BrickBreaker.Screens
 {
-    public partial class EndScreenL : UserControl
+    public partial class EndScreenD : UserControl
     {
-        public EndScreenL()
+        public EndScreenD()
         {
             InitializeComponent();
         }

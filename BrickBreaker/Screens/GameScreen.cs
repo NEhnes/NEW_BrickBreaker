@@ -49,7 +49,7 @@ namespace BrickBreaker
 
         // list of all blocks for current level
         List<Block> blocks = new List<Block>();
-        string currentLevel = "Level2";
+        string currentLevel = "Level1";
 
         // Brushes
         SolidBrush paddleBrush = new SolidBrush(Color.White);
@@ -289,6 +289,27 @@ namespace BrickBreaker
                 if (ballRect.IntersectsWith(blockRect))
                 {
                     blocks.RemoveAt(i);
+                    if (blocks.Count <= 0)
+                    {
+                        if (currentLevel == "Level1")
+                        {
+                            currentLevel = "Level2";
+                        }
+                        if (currentLevel == "Level2")
+                        {
+                            currentLevel = "Level3";
+                        }
+                        if (currentLevel == "Level3") 
+                        {
+                            Form form = this.FindForm();
+                            Screens.EndScreenL ps = new Screens.EndScreenL();
+
+                            ps.Location = new Point((form.Width - ps.Width) / 2, (form.Height - ps.Height) / 2);
+
+                            form.Controls.Add(ps);
+                            form.Controls.Remove(this);
+                        }
+                    }
 
                     if (!piercingBall)
                     {
@@ -309,6 +330,28 @@ namespace BrickBreaker
             {
                 p.Move();
             }
+            Rectangle paddleRect = new Rectangle(paddle.x, paddle.y, paddle.width, paddle.height);
+
+            for (int i = powerups.Count - 1; i >= 0; i--)
+            {
+                Powerup p = powerups[i];
+                Rectangle powerupRect = new Rectangle(p.x, p.y, p.size, p.size);
+
+                // Check if paddle collects the powerup
+                if (powerupRect.IntersectsWith(paddleRect))
+                {
+                    ApplyPowerup(p.type);      // Apply effect
+                    powerups.RemoveAt(i);      // Remove powerup from screen
+                }
+                else if (p.y > paddle.y + paddle.height)
+                {
+                    powerups.RemoveAt(i);      // Remove if it falls below screen
+                }
+                else
+                {
+                    p.Move();                  // Let it fall down
+                }
+            }
 
             //PowerupCollision();
 
@@ -321,13 +364,26 @@ namespace BrickBreaker
             gameSound.Close();
 
             // Goes to the game over screen
-            Form form = this.FindForm();
-            Screens.EndScreenL ps = new Screens.EndScreenL();
+            if (Screens.OptionsScreenL.light == true)
+            {
+                Form form = this.FindForm();
+                Screens.EndScreenL ps = new Screens.EndScreenL();
 
-            ps.Location = new Point((form.Width - ps.Width) / 2, (form.Height - ps.Height) / 2);
+                ps.Location = new Point((form.Width - ps.Width) / 2, (form.Height - ps.Height) / 2);
 
-            form.Controls.Add(ps);
-            form.Controls.Remove(this);
+                form.Controls.Add(ps);
+                form.Controls.Remove(this);
+            }
+            else
+            {
+                Form form = this.FindForm();
+                Screens.EndScreenD psd = new Screens.EndScreenD();
+
+                psd.Location = new Point((form.Width - psd.Width) / 2, (form.Height - psd.Height) / 2);
+
+                form.Controls.Add(psd);
+                form.Controls.Remove(this);
+            }
         }
 
         public void GameScreen_Paint(object sender, PaintEventArgs e)
