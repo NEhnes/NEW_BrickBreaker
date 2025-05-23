@@ -518,7 +518,7 @@ namespace BrickBreaker
                     break;
             }
         }
-        private static void TimerElapsed(object sender, ElapsedEventArgs e, String timerId)  // Timer elapsed event listener
+        private void TimerElapsed(object sender, ElapsedEventArgs e, String timerId)  // Timer elapsed event listener
         {
             Console.WriteLine($"Timer {timerId} finished at {DateTime.Now}");
 
@@ -526,17 +526,17 @@ namespace BrickBreaker
             {
                 case "SpeedBoost":
 
-                    
+                    paddle.speed = 12; // Reset paddle speed
 
                     break;
                 case "BigPaddle":
 
-                    // end effect
+                    paddle.width -= 40; // Reset paddle size
 
                     break;
                 case "SpeedReduction":
 
-                    // end effect
+                    ball.speedMultiplier = 1.2; // Reset ball speed
 
                     break;
                 case "Bullet":
@@ -556,6 +556,11 @@ namespace BrickBreaker
             BigPaddleTimer.Elapsed += (sender, e) => TimerElapsed(sender, e, "BigPaddle");
             SpeedReductionTimer.Elapsed += (sender, e) => TimerElapsed(sender, e, "SpeedReduction");
             BulletTimer.Elapsed += (sender, e) => TimerElapsed(sender, e, "Bullet");
+
+            SpeedBoostTimer.AutoReset = false;
+            BigPaddleTimer.AutoReset = false;
+            SpeedReductionTimer.AutoReset = false;
+            BulletTimer.AutoReset = false;
         }
     }
 }
