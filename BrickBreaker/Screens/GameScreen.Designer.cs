@@ -95,7 +95,7 @@ namespace BrickBreaker
             this.Controls.Add(this.scoreText);
             this.Controls.Add(this.lifeLabel);
             this.DoubleBuffered = true;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "GameScreen";
             this.Size = new System.Drawing.Size(1068, 678);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.GameScreen_Paint);

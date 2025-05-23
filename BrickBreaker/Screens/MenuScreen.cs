@@ -59,12 +59,11 @@ namespace BrickBreaker
         private void optionsButton_Click(object sender, EventArgs e)
         {
             Form f = this.FindForm();
-
             Screens.OptionsScreenL os = new Screens.OptionsScreenL();
-            f.Controls.Add(os);
-            os.Location = new Point((this.Width - os.Width) / 2, (this.Height - os.Height) / 2);
-            os.Show();
 
+            os.Location = new Point((f.Width - os.Width) / 2, (f.Height - os.Height) / 2);
+            
+            f.Controls.Add(os);
             f.Controls.Remove(this);
         }
     }
