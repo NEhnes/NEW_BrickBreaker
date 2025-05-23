@@ -30,7 +30,7 @@ namespace BrickBreaker.Screens
 
             Screens.OptionsScreenD osd = new Screens.OptionsScreenD();
             f.Controls.Add(osd);
-            osd.Location = new Point((this.Width - osd.Width) / 2, (this.Height - osd.Height) / 2);
+            osd.Location = new Point((f.Width - osd.Width) / 2, (f.Height - osd.Height) / 2);
             osd.Show();
 
             f.Controls.Remove(this);
