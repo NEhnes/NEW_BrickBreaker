@@ -58,6 +58,7 @@ namespace BrickBreaker
         // Powerup management and random object
         List<Powerup> powerups = new List<Powerup>();
         List<Powerup> activePowerups = new List<Powerup>();
+        List<String> activePowerupTypes = new List<String>();
         Random rand = new Random();
 
         // Powerup duration & timers
@@ -122,16 +123,15 @@ namespace BrickBreaker
             int ySpeed = 6;
             ball = new Ball(ballX, ballY, xSpeed, ySpeed, ballSize, speedMultiplier); // added speed parameter
 
-            #region Creates blocks for generic level. Need to replace with code that loads levels.
-
-            //TODO - replace all the code in this region eventually with code that loads levels from xml files
-
             blocks.Clear();
             LoadBlocks();
 
-            #endregion
+            // reset any variable affected by powerups
+            paddle.width = 80; // reset paddle size
+            paddle.speed = 12; // reset paddle speed
+            ball.speedMultiplier = 1.2; // reset ball speed
 
-            // start the game engine loop
+            // don't start the game engine loop until space pressed
             gameTimer.Enabled = false;
 
             gameSound.Open(new Uri(Application.StartupPath + "/Resources/background.mp3"));
@@ -394,12 +394,33 @@ namespace BrickBreaker
 
             // Draw collected powerups as squares in top right
             int collectedX = 850;
-            int collectedY = 20;
-            foreach (Powerup p in activePowerups)
+            int collectedY = 652;
+            foreach (String type in activePowerupTypes)
             {
                 collectedX -= 30;
-                Rectangle powerupRect = new Rectangle(collectedX, collectedY, p.size, p.size);
-                e.Graphics.FillRectangle(p.brush, powerupRect);
+                Rectangle powerupRect = new Rectangle(collectedX, collectedY, 15, 15);
+                Brush powerupBrush = new SolidBrush(Color.Gray);
+
+                switch (type)
+                {
+                    case "ExtraLife":
+                        powerupBrush = new SolidBrush(Color.Green);
+                        break;
+                    case "SpeedBoost":
+                        powerupBrush = new SolidBrush(Color.Blue);
+                        break;
+                    case "BigPaddle":
+                        powerupBrush = new SolidBrush(Color.Orange);
+                        break;
+                    case "SpeedReduction":
+                        powerupBrush = new SolidBrush(Color.Red);
+                        break;
+                    case "BulletBoost":
+                        powerupBrush = new SolidBrush(Color.Yellow);
+                        break;
+                }
+
+                e.Graphics.FillRectangle(powerupBrush, powerupRect);
             }
 
             // Draws blocks
@@ -450,7 +471,6 @@ namespace BrickBreaker
             while (reader.Read())
             {
                 if (reader.NodeType == XmlNodeType.Text)
-
                 {
                     newX = reader.ReadString();
                     int blockX = Convert.ToInt32(newX);
@@ -486,7 +506,12 @@ namespace BrickBreaker
             // add to activePowerups, remove from powerups list, start corresponding timer
             foreach (Powerup p in intersectingList)
             {
-                activePowerups.Add(p);
+                if (!activePowerupTypes.Contains(p.type)) // only add if not already active
+                {
+                    activePowerups.Add(p);
+                }
+
+                activePowerupTypes.Add(p.type);
                 powerups.Remove(p);
 
                 ApplyPowerup(p.type); // apply the powerup effect
@@ -527,16 +552,19 @@ namespace BrickBreaker
                 case "SpeedBoost":
 
                     paddle.speed = 12; // Reset paddle speed
+                    activePowerupTypes.Remove("SpeedBoost");
 
                     break;
                 case "BigPaddle":
 
                     paddle.width -= 40; // Reset paddle size
+                    activePowerupTypes.Remove("BigPaddle");
 
                     break;
                 case "SpeedReduction":
 
                     ball.speedMultiplier = 1.2; // Reset ball speed
+                    activePowerupTypes.Remove("SpeedReduction");
 
                     break;
                 case "Bullet":
