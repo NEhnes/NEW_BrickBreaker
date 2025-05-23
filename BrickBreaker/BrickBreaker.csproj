@@ -237,6 +237,11 @@
     <Content Include="Level3.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\resized_yellowCoral.png" />
+    <None Include="Resources\resized_redCoral.png" />
+    <None Include="Resources\resized_pinkCoral.png" />
+    <None Include="Resources\resized_greyCoral.png" />
+    <None Include="Resources\resized_blueCoral.png" />
     <None Include="Resources\background.mp3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
