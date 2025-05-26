@@ -26,7 +26,13 @@ namespace BrickBreaker
     {
         #region global values
         bool piercingBall = false;
-      
+
+        // Cached block images
+        private Image redCoralCache;
+        private Image blueCoralCache;
+        private Image pinkCoralCache;
+        private Image yellowCoralCache;
+        private Image greyCoralCache;
 
         //player1 button control keys - DO NOT CHANGE
         Boolean leftArrowDown, rightArrowDown;
@@ -57,7 +63,6 @@ namespace BrickBreaker
 
         // Powerup management and random object
         List<Powerup> powerups = new List<Powerup>();
-        List<Powerup> activePowerups = new List<Powerup>();
         List<String> activePowerupTypes = new List<String>();
         Random rand = new Random();
 
@@ -86,6 +91,13 @@ namespace BrickBreaker
         public void OnStart()
         {
             InitPowerupTimers(); // add event handlers for timers
+
+            // set cached images
+            redCoralCache = Properties.Resources.resized_redCoral;
+            blueCoralCache = Properties.Resources.resized_blueCoral;
+            pinkCoralCache = Properties.Resources.resized_pinkCoral;
+            yellowCoralCache = Properties.Resources.resized_yellowCoral;
+            greyCoralCache = Properties.Resources.resized_greyCoral;
 
             //set life counter
             lives = 3;
@@ -394,7 +406,7 @@ namespace BrickBreaker
 
             // Draw collected powerups as squares in top right
             int collectedX = 850;
-            int collectedY = 652;
+            int collectedY = 500;
             foreach (String type in activePowerupTypes)
             {
                 collectedX -= 30;
@@ -430,23 +442,23 @@ namespace BrickBreaker
 
                 if (b.colour == Color.Red)
                 {
-                    e.Graphics.DrawImage(Properties.Resources.resized_redCoral, recNumber);
+                    e.Graphics.DrawImage(redCoralCache, recNumber);
                 }
                 else if (b.colour == Color.Blue)
                 {
-                    e.Graphics.DrawImage(Properties.Resources.resized_blueCoral, recNumber);
+                    e.Graphics.DrawImage(blueCoralCache, recNumber);
                 }
                 else if (b.colour == Color.Pink)
                 {
-                    e.Graphics.DrawImage(Properties.Resources.resized_pinkCoral, recNumber);
+                    e.Graphics.DrawImage(pinkCoralCache, recNumber);
                 }
                 else if (b.colour == Color.Yellow)
                 {
-                    e.Graphics.DrawImage(Properties.Resources.resized_yellowCoral, recNumber);
+                    e.Graphics.DrawImage(yellowCoralCache, recNumber);
                 }
                 else if (b.colour == Color.Gray)
                 {
-                    e.Graphics.DrawImage(Properties.Resources.resized_greyCoral, recNumber);
+                    e.Graphics.DrawImage(greyCoralCache, recNumber);
                 }
             }
 
@@ -458,8 +470,6 @@ namespace BrickBreaker
                 p.Draw(e.Graphics);
             }
         }
-
-        
 
         private void LoadBlocks()
         {
@@ -503,18 +513,15 @@ namespace BrickBreaker
                 if (powerupRec.IntersectsWith(paddleRec)) intersectingList.Add(p);
             }
 
-            // add to activePowerups, remove from powerups list, start corresponding timer
+            // add to activePowerupTypes, remove from powerups list, start corresponding timer
             foreach (Powerup p in intersectingList)
             {
                 if (!activePowerupTypes.Contains(p.type)) // only add if not already active
                 {
-                    activePowerups.Add(p);
+                    ApplyPowerup(p.type); // apply the powerup effect
+                    activePowerupTypes.Add(p.type); // add to active types list
                 }
-
-                activePowerupTypes.Add(p.type);
                 powerups.Remove(p);
-
-                ApplyPowerup(p.type); // apply the powerup effect
             }
         }
 
