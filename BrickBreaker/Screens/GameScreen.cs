@@ -522,9 +522,31 @@ namespace BrickBreaker
                     activePowerupTypes.Add(p.type); // add to active types list
                 } else
                 {
-
+                    resetTimers(p.type); // reset timer if already active
                 }
                     powerups.Remove(p);
+            }
+        }
+
+        private void resetTimers(String timerId)   // WORKING ONNN
+        {
+            switch (timerId) {
+                case "SpeedBoost":
+                    SpeedBoostTimer.Stop();
+                    SpeedBoostTimer.Start();
+                    break;
+                case "BigPaddle":
+                    BigPaddleTimer.Stop();
+                    BigPaddleTimer.Start();
+                    break;
+                case "SpeedReduction":
+                    SpeedReductionTimer.Stop();
+                    SpeedReductionTimer.Start();
+                    break;
+                case "BulletBoost":
+                    BulletTimer.Stop();
+                    BulletTimer.Start();
+                    break;
             }
         }
 
