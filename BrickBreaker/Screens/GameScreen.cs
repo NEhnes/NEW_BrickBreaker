@@ -516,12 +516,15 @@ namespace BrickBreaker
             // add to activePowerupTypes, remove from powerups list, start corresponding timer
             foreach (Powerup p in intersectingList)
             {
-                if (!activePowerupTypes.Contains(p.type)) // only add if not already active
+                if (!activePowerupTypes.Contains(p.type) || p.type == "ExtraLife") // only add if not already active
                 {
                     ApplyPowerup(p.type); // apply the powerup effect
                     activePowerupTypes.Add(p.type); // add to active types list
+                } else
+                {
+
                 }
-                powerups.Remove(p);
+                    powerups.Remove(p);
             }
         }
 
@@ -550,9 +553,16 @@ namespace BrickBreaker
                     break;
             }
         }
+
+        private void EndPowerupTimer(String timerId)
+        {
+
+        }
+
         private void TimerElapsed(object sender, ElapsedEventArgs e, String timerId)  // Timer elapsed event listener
         {
             Console.WriteLine($"Timer {timerId} finished at {DateTime.Now}");
+
 
             switch (timerId)
             {
