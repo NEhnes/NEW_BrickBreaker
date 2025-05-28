@@ -279,6 +279,8 @@ namespace BrickBreaker
                     LoadBlocks();
                     Refresh();
 
+                    LFischStart(); // random change background image
+
                     gameTimer.Enabled = false; // stop the timer after loading new level
                 }
                 return; // Exit early if level cleared
@@ -296,11 +298,11 @@ namespace BrickBreaker
 
                     popPlayer.Play();
 
-                    
+
                     // Block was hit — now spawn a powerup
                     if (rand.Next(0, 100) < 40) // 40% chance
                     {
-                        string[] types = { "ExtraLife", "SpeedBoost", "SlowBall", "BigPaddle"};
+                        string[] types = { "ExtraLife", "SpeedBoost", "SlowBall", "BigPaddle" };
                         string type = types[rand.Next(types.Length)];
 
                         Powerup newPowerup = new Powerup(b.x, b.y, type);
@@ -330,7 +332,7 @@ namespace BrickBreaker
                         {
                             currentLevel = "Level3";
                         }
-                        if (currentLevel == "Level3") 
+                        if (currentLevel == "Level3")
                         {
                             Form form = this.FindForm();
                             Screens.EndScreenL ps = new Screens.EndScreenL();
@@ -399,7 +401,6 @@ namespace BrickBreaker
                 Form form = this.FindForm();
                 Screens.EndScreenL ps = new Screens.EndScreenL();
 
-                // ON END CALLED TWICE? ERROR SOURCE?
                 ps.Location = new Point((form.Width - ps.Width) / 2, (form.Height - ps.Height) / 2);
 
                 form.Controls.Add(ps);
@@ -456,6 +457,7 @@ namespace BrickBreaker
             // Draws ball
             e.Graphics.FillRectangle(ballBrush, ball.x, ball.y, ball.size, ball.size);
 
+            // Draw falling powerups
             foreach (Powerup p in powerups)
             {
                 p.Draw(e.Graphics);
@@ -508,25 +510,27 @@ namespace BrickBreaker
             // add to activePowerupTypes, remove from powerups list, start corresponding timer
             foreach (Powerup p in intersectingList)
             {
-                if (!activePowerupTypes.Contains(p.type) || p.type == "ExtraLife") // only add if not already active
+                if (!activePowerupTypes.Contains(p.type) || p.type == "ExtraLife") // if not already active
                 {
-                    ApplyPowerup(p.type); // apply the powerup effect
-                    
+                    ApplyPowerup(p.type);
+
                     if (p.type != "ExtraLife")
                     {
-                        activePowerupTypes.Add(p.type); // add to active types list
+                        activePowerupTypes.Add(p.type);
                     }
-                } else
+                }
+                else
                 {
                     ResetTimer(p.type); // reset timer if already active
                 }
-                    powerups.Remove(p);
+                powerups.Remove(p);
             }
         }
 
         private void ResetTimer(String timerId)
         {
-            switch (timerId) {
+            switch (timerId)
+            {
                 case "SpeedBoost":
                     SpeedBoostTimer.Stop();
                     SpeedBoostTimer.Start();
@@ -572,7 +576,6 @@ namespace BrickBreaker
         {
             Console.WriteLine($"Timer {timerId} finished at {DateTime.Now}");
 
-
             switch (timerId)
             {
                 case "SpeedBoost":
@@ -605,6 +608,7 @@ namespace BrickBreaker
 
         private void InitPowerupTimers() // assign event handlers for powerup timers.
         {
+            // i dont care enough to do for loops
             SpeedBoostTimer.Elapsed += (sender, e) => TimerElapsed(sender, e, "SpeedBoost");
             BigPaddleTimer.Elapsed += (sender, e) => TimerElapsed(sender, e, "BigPaddle");
             SpeedReductionTimer.Elapsed += (sender, e) => TimerElapsed(sender, e, "SlowBall");
