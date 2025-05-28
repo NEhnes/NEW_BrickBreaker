@@ -25,8 +25,8 @@ namespace BrickBreaker
             if (type == "ExtraLife") brush = new SolidBrush(Color.Green);
             else if (type == "SpeedBoost") brush = new SolidBrush(Color.Blue);
             else if (type == "BigPaddle") brush = new SolidBrush(Color.Orange);
-            else if (type == "SpeedReduction") brush = new SolidBrush(Color.Red);
-            else if (type == "BulletBoost") brush = new SolidBrush(Color.Yellow);
+            else if (type == "SlowBall") brush = new SolidBrush(Color.Red);
+            else if (type == "BulletBoost") brush = new SolidBrush(Color.Yellow);  //NOT USED - BUGS
             else brush = new SolidBrush(Color.Gray); // default
         }
 
